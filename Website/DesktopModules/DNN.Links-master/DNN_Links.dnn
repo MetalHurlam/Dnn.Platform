@@ -1,0 +1,165 @@
+﻿<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="DNN_Links" type="Module" version="7.0.1">
+      <friendlyName>Links</friendlyName>
+      <description>This module renders a list of hyperlinks. Links includes an edit page, which allows authorized users to edit the Links data stored in the SQL database.</description>
+      <iconFile>img/links-icon.png</iconFile>
+      <owner>
+        <name>DotNetNuke Corporation</name>
+        <organization>DotNetNuke Corporation</organization>
+        <url>http://www.dotnetnuke.com</url>
+        <email>support@dotnetnuke.com</email>
+      </owner>
+      <license src="License.htm" />
+      <releaseNotes src="ReleaseNotes.htm" />
+      <azureCompatible>true</azureCompatible>
+      <dependencies>
+        <dependency type="coreVersion">08.00.00</dependency>
+      </dependencies>
+      <components>
+        <component type="Config">
+          <config>
+            <configFile>web.config</configFile>
+            <install>
+              <configuration>
+                <nodes>
+                  <node path="/configuration/system.web/compilation/codeSubDirectories/add[@directoryName='Links']" action="remove" />
+                </nodes>
+              </configuration>
+            </install>
+            <uninstall>
+              <configuration>
+                <nodes />
+              </configuration>
+            </uninstall>
+          </config>
+        </component>
+        <component type="Cleanup" version="07.00.00" fileName="Cleanup.07.00.00.txt">          
+        </component>
+        <component type="Script">
+          <scripts>
+            <basePath>DesktopModules\Links</basePath>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>03.01.00.SqlDataProvider</name>
+              <version>03.01.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>03.03.00.SqlDataProvider</name>
+              <version>03.03.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>03.03.06.SqlDataProvider</name>
+              <version>03.03.06</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>04.00.00.SqlDataProvider</name>
+              <version>04.00.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>04.00.01.SqlDataProvider</name>
+              <version>04.00.01</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>04.01.00.SqlDataProvider</name>
+              <version>04.01.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>04.01.01.SqlDataProvider</name>
+              <version>04.01.01</version>
+            </script>
+            <script type="UnInstall">
+              <path>Providers\DataProviders\SqlDataProvider\</path>
+              <name>Uninstall.SqlDataProvider</name>
+              <version>7.0.0</version>
+            </script>
+          </scripts>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/Links</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>DNN_Links</moduleName>
+            <foldername>Links</foldername>
+            <businessControllerClass>DotNetNuke.Modules.Links.Components.FeatureController</businessControllerClass>
+            <supportedFeatures>
+              <supportedFeature type="Portable" />
+              <supportedFeature type="Searchable" />
+            </supportedFeatures>
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>Links</friendlyName>
+                <definitionName>Links</definitionName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>DesktopModules/Links/Links.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl>http://www.dotnetnuke.com/default.aspx?tabid=787</helpUrl>
+                    <supportsPopUps>False</supportsPopUps>
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Edit</controlKey>
+                    <controlSrc>DesktopModules/Links/EditLinks.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Edit Links</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl>http://www.dotnetnuke.com/default.aspx?tabid=787</helpUrl>
+                    <supportsPopUps>False</supportsPopUps>
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Settings</controlKey>
+                    <controlSrc>DesktopModules/Links/Settings.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Links Settings</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl>http://www.dotnetnuke.com/default.aspx?tabid=787</helpUrl>
+                    <supportsPopUps>False</supportsPopUps>
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+          <eventMessage>
+            <processorType>DotNetNuke.Entities.Modules.EventMessageProcessor, DotNetNuke</processorType>
+            <processorCommand>UpgradeModule</processorCommand>
+            <attributes>
+              <businessControllerClass>DotNetNuke.Modules.Links.Components.FeatureController</businessControllerClass>
+              <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
+              <upgradeVersionsList>03.01.00,03.03.00,03.03.06,04.00.00,04.00.01,04.01.00,04.01.01,07.00.00</upgradeVersionsList>
+            </attributes>
+          </eventMessage>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <assembly>
+              <name>DotNetNuke.Modules.Links.dll</name>
+              <path>bin</path>
+            </assembly>
+          </assemblies>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>
